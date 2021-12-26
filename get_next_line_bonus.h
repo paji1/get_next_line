@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/21 21:28:00 by tel-mouh          #+#    #+#             */
-/*   Updated: 2021/12/23 06:42:26 by tel-mouh         ###   ########.fr       */
+/*   Created: 2021/12/08 08:13:53 by tel-mouh          #+#    #+#             */
+/*   Updated: 2021/12/26 13:01:02 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-int main()
-{
-	// int fd = open("files/41_with_nl", O_CREAT | O_RDWR, 0777);
-	// int t = -1;
+# include <stdlib.h>
+# include <unistd.h>
 
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+char	*ft_strdup(const char *s1);
+char	*ft_strjoin(char *s1, char *s2);
+char	*get_next_line(int fd);
+int		ft_strchr(const char *p, int c);
 
-	
-	// while(++t < 5)
-	// {
-		
-		printf("%d", (*get_next_line(0))-48);
-		
-	// }
-
-	
-	
-	
-
-	return 0;
-}
+#endif

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tel-mouh <tel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 08:13:37 by tel-mouh          #+#    #+#             */
-/*   Updated: 2021/12/26 12:56:19 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2021/12/26 13:04:28 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*readbuf(int fd, char *str)
 {
@@ -55,12 +55,13 @@ char	*get_line(char **str)
 
 char	*get_next_line(int fd)
 {
-	static char	*str;
+	static char	*str[10240];
 	char		*r;
 
-	r = NULL;
-	r = readbuf(fd, str);
+	if (fd < 0 || fd >= 10240)
+		return (NULL);
+	r = readbuf(fd, str[fd]);
 	if (!r)
 		return (NULL);
-	return (str = get_line(&r), r);
+	return (str[fd] = get_line(&r), r);
 }
