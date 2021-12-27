@@ -6,7 +6,7 @@
 /*   By: tel-mouh <tel-mouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 08:13:37 by tel-mouh          #+#    #+#             */
-/*   Updated: 2021/12/26 12:56:19 by tel-mouh         ###   ########.fr       */
+/*   Updated: 2021/12/26 20:33:38 by tel-mouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*readbuf(int fd, char *str)
 	n = 1;
 	if (!str)
 		str = "";
+	if (ft_strchr(str, '\n') != -1)
+		return (str);
 	while (ft_strchr(buff, '\n') == -1 && n)
 	{	
 		n = read(fd, buff, BUFFER_SIZE);
@@ -50,7 +52,10 @@ char	*get_line(char **str)
 		return (NULL);
 	s = ft_strdup(*str + i + 1);
 	t = *str;
-	return (*str = malloc(i + 2), ft_strlcpy(*str, t, i + 2), free(t), s);
+	*str = malloc(i + 2);
+	if (!*str)
+		return (NULL);
+	return (ft_strlcpy(*str, t, i + 2), free(t), s);
 }
 
 char	*get_next_line(int fd)
